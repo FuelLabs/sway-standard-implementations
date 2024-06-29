@@ -50,7 +50,6 @@ impl SRC14Extension for Contract {
 }
 
 impl OwnedProxy for Contract {
-    // Used to immediately set the storage variables as the configured constants
     #[storage(write)]
     fn initialize_proxy() {
         require(
@@ -71,6 +70,5 @@ impl OwnedProxy for Contract {
 #[fallback]
 #[storage(read)]
 fn fallback() {
-    // pass through any other method call to the target
     run_external(_proxy_target().expect("FallbackError::TargetUninitialized"))
 }
