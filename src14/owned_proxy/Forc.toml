@@ -1,0 +1,11 @@
+[project]
+authors = ["Fuel Labs <contact@fuel.sh>"]
+entry = "main.sw"
+license = "Apache-2.0"
+name = "src14_owned_proxy"
+
+[dependencies]
+# TODO: use latest release that includes update SRC-14 ABIs
+standards = { git = "https://github.com/FuelLabs/sway-standards", branch = "master" }
+# TODO: use latest release that includes upgradeability lib
+sway_libs = { git = "https://github.com/FuelLabs/sway-libs", branch = "k1-r1-upgradable" }
