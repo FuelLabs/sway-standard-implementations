@@ -18,16 +18,14 @@ env:
   RUST_VERSION: 1.79.0
 
 jobs:
-  build-projects-and-run-tests:
+  build-projects:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         project:
           [
             "src14/owned_proxy",
           ]
-          
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -49,15 +47,29 @@ jobs:
         run: |
           cd ${{ matrix.project }}
           forc build --release --locked
-      
-      - name: Build All Tests Artifacts
-        run: forc build --path tests --release --locked
+
+  test-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Init cache
+        uses: Swatinem/rust-cache@v2
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ env.RUST_VERSION }}
           components: clippy, rustfmt
+
+      - name: Install Fuel toolchain
+        uses: FuelLabs/action-fuel-toolchain@v0.6.0
+        with:
+          toolchain: latest
+
+      - name: Build All Tests Artifacts
+        run: forc build --path tests --release
 
       - name: Check Rust formatting
         run: cargo fmt --manifest-path tests/Cargo.toml --verbose --check
