@@ -36,7 +36,7 @@ jobs:
       - name: Install Fuel toolchain
         uses: FuelLabs/action-fuel-toolchain@v0.6.0
         with:
-          toolchain: testnet
+          toolchain: latest
 
       - name: Check Sway formatting
         run: |
@@ -66,7 +66,7 @@ jobs:
       - name: Install Fuel toolchain
         uses: FuelLabs/action-fuel-toolchain@v0.6.0
         with:
-          toolchain: testnet
+          toolchain: latest
 
       - name: Build All Tests Artifacts
         run: forc build --path tests --release --locked
