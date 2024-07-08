@@ -216,6 +216,6 @@ pub mod test_helpers {
             wallet: owner2.clone(),
         };
 
-        (deployer, owner1, owner2, initial_target_id.into())
+        (deployer, owner1, owner2, initial_target_id)
     }
 }
