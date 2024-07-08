@@ -1,8 +1,30 @@
-# sway-standard-implementations
+<p align="center">
+    <a href="https://github.com/FuelLabs/sway-standard-implementations/actions/workflows/ci.yml" alt="CI">
+        <img src="https://github.com/FuelLabs/sway-standard-implementations/actions/workflows/ci.yml/badge.svg" />
+    </a>
+    <a href="./LICENSE" alt="forc">
+        <img src="https://img.shields.io/github/license/FuelLabs/sway-libs" />
+    </a>
+    <a href="https://discord.gg/xfpK4Pe">
+        <img src="https://img.shields.io/discord/732892373507375164?color=6A7EC2&logo=discord&logoColor=ffffff&labelColor=6A7EC2&label=Discord" />
+    </a>
+</p>
 
-## Running Tests
+# Sway Standard Implementations
 
-Make sure you are in the source directory of this repository `sway-standard-implementations/<you are here>`.
+## Overview
+
+The purpose of this repository is to contain production ready implementations of the [sway standards](https://github.com/FuelLabs/sway-standards).
+
+## Implementations
+
+#### SRC-14: Owned Proxy Contract
+
+- [Owned Proxy Contract](./src14/owned_proxy/) is an opinionated implementation of the [extended SRC-14 standard](https://docs.fuel.network/docs/sway-standards/src-14-simple-upgradeable-proxies/). It utilises the [Upgradability library from sway-libs](https://github.com/FuelLabs/sway-libs) and includes initialization functionality that allows for secure ownership upon deployment.
+
+## Tests
+
+To run the tests of the implementation projects; make sure you are in the source directory of this repository `sway-standard-implementations/<you are here>`.
 
 Run the sdk-harness tests:
 
