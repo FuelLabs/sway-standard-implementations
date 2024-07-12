@@ -7,4 +7,4 @@ name = "src14_owned_proxy"
 [dependencies]
 standards = { git = "https://github.com/FuelLabs/sway-standards", tag = "v0.5.1" }
 # TODO: use latest release that includes upgradeability lib
-sway_libs = { git = "https://github.com/FuelLabs/sway-libs", branch = "k1-r1-upgradable" }
+sway_libs = { git = "https://github.com/FuelLabs/sway-libs", branch = "master" }
