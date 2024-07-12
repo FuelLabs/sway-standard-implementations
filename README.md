@@ -29,7 +29,7 @@ To run the tests of the implementation projects; make sure you are in the source
 Run the sdk-harness tests:
 
 ```bash
-forc test --path tests --release --locked && cargo test --manifest-path tests/Cargo.toml
+cd tests && forc test --release --locked && cargo test
 ```
 
 > **NOTE:**
