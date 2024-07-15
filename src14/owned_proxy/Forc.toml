@@ -1,0 +1,10 @@
+[project]
+authors = ["Fuel Labs <contact@fuel.sh>"]
+entry = "main.sw"
+license = "Apache-2.0"
+name = "src14_owned_proxy"
+
+[dependencies]
+standards = { git = "https://github.com/FuelLabs/sway-standards", tag = "v0.5.1" }
+# TODO: use latest release that includes upgradeability lib
+sway_libs = { git = "https://github.com/FuelLabs/sway-libs", branch = "master" }

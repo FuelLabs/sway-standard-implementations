@@ -1,0 +1,2 @@
+[workspace]
+members = ["./src/src14/owned_proxy/test_artifacts/target_contract"]

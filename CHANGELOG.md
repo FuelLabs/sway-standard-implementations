@@ -12,6 +12,7 @@ Description of the upcoming release here.
 ### Added
 
 - [#4](https://github.com/FuelLabs/sway-standard-implementations/pull/4) Adds initial CI.
+- [#1](https://github.com/FuelLabs/sway-standard-implementations/pull/1) Adds an implementation of SRC-14: Owned Proxy.
 
 ### Changed
 
