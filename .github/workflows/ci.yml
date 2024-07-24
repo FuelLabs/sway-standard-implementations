@@ -22,10 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project:
-          [
-            "src14/owned_proxy",
-          ]
+        project: ["src14/owned_proxy"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -76,7 +73,7 @@ jobs:
 
       - name: Check Clippy Linter
         run: cargo clippy --manifest-path tests/Cargo.toml --all-features --all-targets -- -D warnings
-        
+
       - name: Cargo Test sway-lib
         run: cargo test --manifest-path tests/Cargo.toml
 
@@ -104,3 +101,36 @@ jobs:
       - uses: tarides/changelog-check-action@v2
         with:
           changelog: CHANGELOG.md
+
+  build-scripts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: ["src14/owned_proxy"]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Init cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          components: clippy, rustfmt
+
+      - name: Check Rust formatting
+        run: |
+          cd ${{ matrix.project }}
+          cargo fmt --manifest-path scripts/Cargo.toml --verbose --check
+
+      - name: Cargo Build scripts
+        run: |
+          cd ${{ matrix.project }}
+          cargo build --manifest-path scripts/Cargo.toml
+
+      - name: Check Clippy Linter
+        run: |
+          cd ${{ matrix.project }}
+          cargo clippy --manifest-path scripts/Cargo.toml --all-features --all-targets -- -D warnings
