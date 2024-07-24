@@ -1,0 +1,27 @@
+[package]
+name = "src14-owned-proxy-scripts"
+version = "0.0.0"
+authors = ["Fuel Labs <contact@fuel.sh>"]
+edition = "2021"
+license = "Apache-2.0"
+
+[dependencies]
+fuels = { version = "0.65", features = ["fuel-core-lib"] }
+tokio = { version = "1.39", features = ["rt", "macros"] }
+clap = "4.5"
+
+[lib]
+name = "proxy_script_utils"
+path = "src/utils.rs"
+
+[[bin]]
+name = "deploy_and_init"
+path = "src/deploy_and_init.rs"
+
+[[bin]]
+name = "set_proxy_owner"
+path = "src/set_proxy_owner.rs"
+
+[[bin]]
+name = "set_proxy_target"
+path = "src/set_proxy_target.rs"
