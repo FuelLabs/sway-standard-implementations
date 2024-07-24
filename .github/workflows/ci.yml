@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ["src14/owned_proxy"]
+        project: ["src14/owned_proxy/contract"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ["src14/owned_proxy"]
+        project: ["src14/owned_proxy/scripts"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -123,14 +123,14 @@ jobs:
       - name: Check Rust formatting
         run: |
           cd ${{ matrix.project }}
-          cargo fmt --manifest-path scripts/Cargo.toml --verbose --check
+          cargo fmt --verbose --check
 
       - name: Cargo Build scripts
         run: |
           cd ${{ matrix.project }}
-          cargo build --manifest-path scripts/Cargo.toml
+          cargo build
 
       - name: Check Clippy Linter
         run: |
           cd ${{ matrix.project }}
-          cargo clippy --manifest-path scripts/Cargo.toml --all-features --all-targets -- -D warnings
+          cargo clippy --all-features --all-targets -- -D warnings
