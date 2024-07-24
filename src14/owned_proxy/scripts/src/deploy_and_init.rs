@@ -5,7 +5,6 @@ use fuels::{
 };
 use proxy_script_utils::{setup_signing_wallet, ProxyContract, ProxyContractConfigurables, State};
 use std::str::FromStr;
-use tokio;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]

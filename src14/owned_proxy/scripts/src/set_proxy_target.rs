@@ -2,7 +2,6 @@ use clap::Parser;
 use fuels::types::ContractId;
 use proxy_script_utils::{get_proxy_instance, setup_signing_wallet};
 use std::str::FromStr;
-use tokio;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
