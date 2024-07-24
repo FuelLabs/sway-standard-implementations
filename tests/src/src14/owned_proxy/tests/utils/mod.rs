@@ -9,7 +9,7 @@ use fuels::{
 // Load abi from json
 abigen!(Contract(
     name = "ProxyContract",
-    abi = "../src14/owned_proxy/out/release/src14_owned_proxy-abi.json"
+    abi = "../src14/owned_proxy/contract/out/release/src14_owned_proxy-abi.json"
 ),Contract(
     name = "TargetContract",
     abi =
@@ -174,7 +174,7 @@ pub mod test_helpers {
         // deploy proxy that targets the initial target contract
         let storage_configuration = StorageConfiguration::default()
             .add_slot_overrides_from_file(
-                "../src14/owned_proxy/out/release/src14_owned_proxy-storage_slots.json",
+                "../src14/owned_proxy/contract/out/release/src14_owned_proxy-storage_slots.json",
             )
             .unwrap();
 
@@ -189,7 +189,7 @@ pub mod test_helpers {
             .with_configurables(configurables);
 
         let proxy_id = Contract::load_from(
-            "../src14/owned_proxy/out/release/src14_owned_proxy.bin",
+            "../src14/owned_proxy/contract/out/release/src14_owned_proxy.bin",
             configuration,
         )
         .unwrap()
