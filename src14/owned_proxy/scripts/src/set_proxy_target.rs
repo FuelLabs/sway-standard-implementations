@@ -10,7 +10,7 @@ struct Args {
     #[arg(long, default_value = "testnet.fuel.network")]
     provider_url: String,
     /// Signing key
-    #[arg(short, long, required = true)]
+    #[arg(short, long, required = true, env = "SIGNING_KEY")]
     signing_key: String,
     /// Proxy Contract Id
     #[arg(long, required = true)]

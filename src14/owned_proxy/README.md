@@ -23,27 +23,30 @@ cd src14/owned_proxy/scripts
 To deploy and initialize the proxy contract the `deploy_and_init` script is available. It will use the arguments `--initial-target` and `--initial-owner` as configurables in the proxy contract. From `sway-standard-implementations/src14/owned_proxy/scripts/<you are here>`:
 
 ```bash
-cargo run -r --bin deploy_and_init -- --signing-key <SIGNING_KEY> --initial-target <INITIAL_TARGET> --initial-owner <INITIAL_OWNER>
+SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin deploy_and_init -- --initial-target <INITIAL_TARGET> --initial-owner <INITIAL_OWNER>
 ```
 
 > **Note:** There is also the optional flag `--provider-url <PROVIDER_URL>` which sets the URL of the provider to be used in the script. If not manually set, it defaults to `testnet.fuel.network`.
+> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
 
 #### Updating the proxy owner
 
 To update the proxy contract's owner the `set_proxy_owner` script is available. It will use the argument `--new-owner` as the new owner in the proxy contract. From `sway-standard-implementations/src14/owned_proxy/scripts/<you are here>`:
 
 ```bash
-cargo run -r --bin set_proxy_owner -- --signing-key <SIGNING_KEY> --proxy-contract-id <PROXY_CONTRACT_ID> --new-owner <NEW_OWNER>
+SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin set_proxy_owner -- --proxy-contract-id <PROXY_CONTRACT_ID> --new-owner <NEW_OWNER>
 ```
 
 > **Note:** There is also the optional flag `--provider-url <PROVIDER_URL>` which sets the URL of the provider to be used in the script. If not manually set, it defaults to `testnet.fuel.network`.
+> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
 
 #### Updating the target contract
 
 To update the proxy contract's target the `set_proxy_target` script is available. It will use the argument `--new-target-id` as the new target contract in the proxy contract. From `sway-standard-implementations/src14/owned_proxy/scripts/<you are here>`:
 
 ```bash
-cargo run -r --bin set_proxy_target -- --signing-key <SIGNING_KEY> --proxy-contract-id <PROXY_CONTRACT_ID> --new-target-id <NEW_TARGET_ID>
+SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin set_proxy_target -- --proxy-contract-id <PROXY_CONTRACT_ID> --new-target-id <NEW_TARGET_ID>
 ```
 
 > **Note:** There is also the optional flag `--provider-url <PROVIDER_URL>` which sets the URL of the provider to be used in the script. If not manually set, it defaults to `testnet.fuel.network`.
+> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.

@@ -13,7 +13,7 @@ struct Args {
     #[arg(short, long, default_value = "testnet.fuel.network")]
     provider_url: String,
     /// Signing key
-    #[arg(short, long, required = true)]
+    #[arg(short, long, required = true, env = "SIGNING_KEY")]
     signing_key: String,
     /// Initial target ContractId
     #[arg(long, required = true)]
