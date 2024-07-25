@@ -6,7 +6,7 @@ edition = "2021"
 license = "Apache-2.0"
 
 [dependencies]
-clap = "4.5"
+clap = { version = "4.5", features = ["env"] }
 fuels = { version = "0.65", features = ["fuel-core-lib"] }
 tokio = { version = "1.39", features = ["rt", "macros"] }
 
