@@ -10,7 +10,7 @@ use std::str::FromStr;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// Provider URL
-    #[arg(short, long, default_value = "testnet.fuel.network")]
+    #[arg(short, long, default_value = "127.0.0.1:4000")]
     provider_url: String,
     /// Signing key
     #[arg(short, long, required = true, env = "SIGNING_KEY")]
