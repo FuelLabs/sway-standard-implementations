@@ -12,6 +12,8 @@ git clone -b master https://github.com/FuelLabs/sway-standard-implementations.gi
 
 ### Rust scripts
 
+> **Warning:** These scripts provide a temporary utility. Proxy deployment functionality and interaction will be integrated into `Forc` in the near future.
+
 A suite of Rust scripts are included to assist in the usage of the contract. In order to use them navigate to the [owned-proxy/scripts](./scripts/) directory. From `sway-standard-implementations/<you are here>`:
 
 ```bash
