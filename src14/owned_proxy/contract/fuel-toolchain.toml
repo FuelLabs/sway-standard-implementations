@@ -1,5 +1,5 @@
 [toolchain]
-channel = "testnet"
+channel = "nightly.20240805.24e7ebfcea"
 
 [components]
 fuel-core = "0.27.0"
