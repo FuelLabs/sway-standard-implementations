@@ -3,7 +3,8 @@ use fuels::{
         abigen, launch_custom_provider_and_get_wallets, Contract, ContractId, LoadConfiguration,
         StorageConfiguration, TxPolicies, WalletUnlocked, WalletsConfig,
     },
-    programs::call_response::FuelCallResponse,
+    programs::responses::CallResponse,
+    types::bech32::Bech32ContractId,
 };
 
 // Load abi from json
@@ -29,7 +30,7 @@ pub mod proxy_abi_calls {
     pub async fn set_proxy_target(
         contract: &ProxyContract<WalletUnlocked>,
         new_target: ContractId,
-    ) -> FuelCallResponse<()> {
+    ) -> CallResponse<()> {
         contract
             .methods()
             .set_proxy_target(new_target)
@@ -40,24 +41,22 @@ pub mod proxy_abi_calls {
 
     pub async fn proxy_target(
         contract: &ProxyContract<WalletUnlocked>,
-    ) -> FuelCallResponse<Option<ContractId>> {
+    ) -> CallResponse<Option<ContractId>> {
         contract.methods().proxy_target().call().await.unwrap()
     }
 
-    pub async fn proxy_owner(contract: &ProxyContract<WalletUnlocked>) -> FuelCallResponse<State> {
+    pub async fn proxy_owner(contract: &ProxyContract<WalletUnlocked>) -> CallResponse<State> {
         contract.methods().proxy_owner().call().await.unwrap()
     }
 
-    pub async fn initialize_proxy(
-        contract: &ProxyContract<WalletUnlocked>,
-    ) -> FuelCallResponse<()> {
+    pub async fn initialize_proxy(contract: &ProxyContract<WalletUnlocked>) -> CallResponse<()> {
         contract.methods().initialize_proxy().call().await.unwrap()
     }
 
     pub async fn set_proxy_owner(
         contract: &ProxyContract<WalletUnlocked>,
         new_proxy_owner: State,
-    ) -> FuelCallResponse<()> {
+    ) -> CallResponse<()> {
         contract
             .methods()
             .set_proxy_owner(new_proxy_owner)
@@ -69,8 +68,6 @@ pub mod proxy_abi_calls {
 
 pub mod target_abi_calls {
 
-    use fuels::types::bech32::Bech32ContractId;
-
     use super::*;
 
     pub async fn sum(
@@ -78,7 +75,7 @@ pub mod target_abi_calls {
         implementation_contract_id: Bech32ContractId,
         a: u64,
         b: u64,
-    ) -> FuelCallResponse<u64> {
+    ) -> CallResponse<u64> {
         contract
             .methods()
             .sum(a, b)
@@ -91,7 +88,7 @@ pub mod target_abi_calls {
     pub async fn read_amount(
         contract: &TargetContract<WalletUnlocked>,
         implementation_contract_id: Bech32ContractId,
-    ) -> FuelCallResponse<u64> {
+    ) -> CallResponse<u64> {
         contract
             .methods()
             .read_amount()
@@ -104,7 +101,7 @@ pub mod target_abi_calls {
     pub async fn increment_amount(
         contract: &TargetContract<WalletUnlocked>,
         implementation_contract_id: Bech32ContractId,
-    ) -> FuelCallResponse<()> {
+    ) -> CallResponse<()> {
         contract
             .methods()
             .increment_amount()
@@ -212,7 +209,7 @@ pub mod test_helpers {
 
         let owner2 = Metadata {
             proxy_contract: ProxyContract::new(proxy_id.clone(), owner2.clone()),
-            target_contract: TargetContract::new(proxy_id.clone(), owner2.clone()),
+            target_contract: TargetContract::new(proxy_id, owner2.clone()),
             wallet: owner2.clone(),
         };
 
