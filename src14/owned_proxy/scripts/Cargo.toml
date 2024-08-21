@@ -6,9 +6,9 @@ edition = "2021"
 license = "Apache-2.0"
 
 [dependencies]
-clap = { version = "4.5", features = ["env"] }
-fuels = { version = "0.65", features = ["fuel-core-lib"] }
-tokio = { version = "1.39", features = ["rt", "macros"] }
+clap = { version = "4.5.16", features = ["env"] }
+fuels = { version = "0.66.2", features = ["fuel-core-lib"] }
+tokio = { version = "1.39.3", features = ["rt", "macros"] }
 
 [lib]
 name = "proxy_script_utils"

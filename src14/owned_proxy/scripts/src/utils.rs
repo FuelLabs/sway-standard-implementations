@@ -14,7 +14,7 @@ abigen!(Contract(
 
 pub mod proxy_abi_calls {
 
-    use super::*;
+    use super::{CallResponse, ContractId, ProxyContract, State, WalletUnlocked};
 
     pub async fn set_proxy_target(
         contract: &ProxyContract<WalletUnlocked>,
