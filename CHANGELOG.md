@@ -15,6 +15,7 @@ Description of the upcoming release here.
 - [#1](https://github.com/FuelLabs/sway-standard-implementations/pull/1) Adds an implementation of SRC-14: Owned Proxy.
 - [#8](https://github.com/FuelLabs/sway-standard-implementations/pull/8) Adds SRC-14 owned proxy usage scripts and docs.
 - [#10](https://github.com/FuelLabs/sway-standard-implementations/pull/10) Sets owned_proxy sway-libs dependency to version v0.23.0.
+- [#19](https://github.com/FuelLabs/sway-standard-implementations/pull/19) Adds CI checks for `forc` compiler warnings.
 
 ### Changed
 
