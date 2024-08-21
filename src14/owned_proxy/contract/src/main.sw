@@ -30,14 +30,10 @@ storage {
         /// # Additional Information
         ///
         /// `target` is stored at sha256("storage_SRC14_0")
-        target: Option<ContractId> = None,
+        target in 0x7bb458adc1d118713319a5baa00a2d049dd64d2916477d2688d76970c898cd55: Option<ContractId> = None,
         /// The [State] of the proxy owner.
-        ///
-        /// # Additional Information
-        ///
-        // `proxy_owner` is stored at sha256("storage_SRC14_1")
         proxy_owner: State = State::Uninitialized,
-    }
+    },
 }
 
 impl SRC14 for Contract {
