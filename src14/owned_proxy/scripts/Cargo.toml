@@ -9,6 +9,7 @@ license = "Apache-2.0"
 clap = { version = "4.5.16", features = ["env"] }
 fuels = { version = "0.66.2", features = ["fuel-core-lib"] }
 tokio = { version = "1.39.3", features = ["rt", "macros"] }
+hex = "0.4.3"
 
 [lib]
 name = "proxy_script_utils"
