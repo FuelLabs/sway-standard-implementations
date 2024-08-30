@@ -32,7 +32,11 @@ storage {
         /// `target` is stored at sha256("storage_SRC14_0")
         target in 0x7bb458adc1d118713319a5baa00a2d049dd64d2916477d2688d76970c898cd55: Option<ContractId> = None,
         /// The [State] of the proxy owner.
-        proxy_owner: State = State::Uninitialized,
+        ///
+        /// # Additional Information
+        ///
+        /// `proxy_owner` is stored at sha256("storage_SRC14_1")
+        proxy_owner in 0xbb79927b15d9259ea316f2ecb2297d6cc8851888a98278c0a2e03e1a091ea754: State = State::Uninitialized,
     },
 }
 
@@ -57,7 +61,7 @@ impl SRC14 for Contract {
     /// * Write: `1`
     #[storage(read, write)]
     fn set_proxy_target(new_target: ContractId) {
-        only_proxy_owner(storage::SRC14.proxy_owner);
+        only_proxy_owner();
         _set_proxy_target(new_target);
     }
 
@@ -88,7 +92,7 @@ impl SRC14Extension for Contract {
     /// * Reads: `1`
     #[storage(read)]
     fn proxy_owner() -> State {
-        _proxy_owner(storage::SRC14.proxy_owner)
+        _proxy_owner()
     }
 }
 
@@ -111,7 +115,7 @@ impl OwnedProxy for Contract {
     #[storage(write)]
     fn initialize_proxy() {
         require(
-            _proxy_owner(storage::SRC14.proxy_owner) == State::Uninitialized,
+            _proxy_owner() == State::Uninitialized,
             InitializationError::CannotReinitialized,
         );
 
@@ -140,7 +144,7 @@ impl OwnedProxy for Contract {
     /// * Writes: `1`
     #[storage(write)]
     fn set_proxy_owner(new_proxy_owner: State) {
-        _set_proxy_owner(new_proxy_owner, storage::SRC14.proxy_owner);
+        _set_proxy_owner(new_proxy_owner);
     }
 }
 
