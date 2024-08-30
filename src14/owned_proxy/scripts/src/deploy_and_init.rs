@@ -1,6 +1,7 @@
 use clap::Parser;
 use fuels::{
-    programs::contract::{Contract, LoadConfiguration, StorageConfiguration}, types::Address
+    programs::contract::{Contract, LoadConfiguration, StorageConfiguration},
+    types::Address,
 };
 use proxy_script_utils::{ProxyContractConfigurables, State};
 use std::str::FromStr;
