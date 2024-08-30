@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [dependencies]
 clap = { version = "4.5.16", features = ["env"] }
-fuels = { version = "0.66.2", features = ["fuel-core-lib"] }
+fuels = { version = "0.66.2" }
 tokio = { version = "1.39.3", features = ["rt", "macros"] }
 
 [lib]
