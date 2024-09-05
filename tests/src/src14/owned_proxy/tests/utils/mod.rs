@@ -115,6 +115,7 @@ pub mod target_abi_calls {
 pub mod test_helpers {
 
     use super::*;
+    use fuels::test_helpers::{ChainConfig, NodeConfig};
 
     pub const INITIAL_INCREMENT_AMOUNT: u64 = 1;
 
@@ -153,8 +154,8 @@ pub mod test_helpers {
         let coin_amount = 1_000_000;
         let mut wallets = launch_custom_provider_and_get_wallets(
             WalletsConfig::new(Some(num_wallets), Some(coins_per_wallet), Some(coin_amount)),
-            None,
-            None,
+            Some(NodeConfig::default()),
+            Some(ChainConfig::default()),
         )
         .await
         .unwrap();
