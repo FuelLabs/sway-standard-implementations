@@ -61,7 +61,7 @@ pub async fn setup_signing_wallet(provider_url: &str, signing_key: &str) -> Wall
     WalletUnlocked::new_from_private_key(secret, Some(provider))
 }
 
-pub fn get_proxy_instance(
+#[must_use] pub fn get_proxy_instance(
     proxy_contract_id: &str,
     signing_wallet: WalletUnlocked,
 ) -> ProxyContract<WalletUnlocked> {
