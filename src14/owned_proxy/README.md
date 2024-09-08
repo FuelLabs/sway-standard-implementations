@@ -10,7 +10,7 @@
 
 ## Recommended Usage
 
-The recommended way to utilise the [Owned Proxy Contract](./contract/src/main.sw) is with [forc-deploy's proxy feature](https://docs.fuel.network/docs/forc/plugins/forc_client/#proxy-contracts).
+The recommended way to utilise the [Owned Proxy Contract](./contract/src/main.sw) is with [forc-deploy's proxy feature](https://docs.fuel.network/docs/forc/plugins/forc_client/#proxy-contracts). A guide on recommended usage of proxies and large contracts is available at: [How To Use Proxy contracts & large contract chunking](https://github.com/FuelLabs/proxy-chunks-minimal-example/tree/main).
 
 ## Manual utility scripts
 

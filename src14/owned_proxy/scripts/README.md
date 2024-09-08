@@ -1,6 +1,6 @@
 # SRC-14: Manual utility scripts
 
-> **Warning:** The recommended way of utilising Proxy Contracts is with [forc-deploy](https://docs.fuel.network/docs/forc/plugins/forc_client/#proxy-contracts).
+> **Warning:** The recommended way of utilising Proxy Contracts is with [forc-deploy](https://docs.fuel.network/docs/forc/plugins/forc_client/#proxy-contracts). A guide on recommended usage of proxies and large contracts is available at: [How To Use Proxy contracts & large contract chunking](https://github.com/FuelLabs/proxy-chunks-minimal-example/tree/main).
 
 ## Utility scripts usage
 
