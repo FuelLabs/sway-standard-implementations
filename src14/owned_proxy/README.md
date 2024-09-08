@@ -1,8 +1,8 @@
 # SRC-14: Owned Proxy Contract
 
 <p align="center">
-<a href="https://crates.io/crates/forc/0.63.3" alt="forc">
-        <img src="https://img.shields.io/badge/forc-v0.63.3-orange" />
+<a href="https://crates.io/crates/forc/0.63.5" alt="forc">
+        <img src="https://img.shields.io/badge/forc-v0.63.5-orange" />
     </a>
 </p>
 
