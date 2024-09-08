@@ -1,20 +1,14 @@
 use clap::Parser;
 use fuels::{
     programs::contract::{Contract, LoadConfiguration, StorageConfiguration},
-    types::{transaction::TxPolicies, Address, ContractId},
+    types::Address,
 };
-use proxy_script_utils::{setup_signing_wallet, ProxyContract, ProxyContractConfigurables, State};
+use proxy_script_utils::{ProxyContractConfigurables, State};
 use std::str::FromStr;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// Provider URL
-    #[arg(short, long, default_value = "127.0.0.1:4000")]
-    provider_url: String,
-    /// Signing key
-    #[arg(short, long, required = true, env = "SIGNING_KEY")]
-    signing_key: String,
     /// Initial target `ContractId`
     #[arg(long, required = true)]
     initial_target: String,
@@ -28,8 +22,6 @@ async fn main() {
     println!("\n|||||||||||||||||||||||||||||||||||||||||||||||||\n-|- Deploying and Initializing Proxy Contract -|-\n|||||||||||||||||||||||||||||||||||||||||||||||||");
     let args = Args::parse();
 
-    let signing_wallet = setup_signing_wallet(&args.provider_url, &args.signing_key).await;
-
     // Deploy proxy with args as configurables
     let storage_configuration = StorageConfiguration::default()
         .add_slot_overrides_from_file(
@@ -38,11 +30,6 @@ async fn main() {
         .unwrap();
 
     let configurables = ProxyContractConfigurables::default()
-        .with_INITIAL_TARGET(Some(
-            ContractId::from_str(&args.initial_target)
-                .expect("Initial target ContractId could not be parsed"),
-        ))
-        .unwrap()
         .with_INITIAL_OWNER(State::Initialized(
             Address::from_str(&args.initial_owner)
                 .expect("Initial owner Id could not be parsed")
@@ -55,26 +42,22 @@ async fn main() {
         .with_configurables(configurables);
 
     println!("\n - Deploying proxy contract...");
-    let proxy_contract_id = Contract::load_from(
+    let proxy_contract = Contract::load_from(
         "../contract/out/release/src14_owned_proxy.bin",
         configuration,
     )
-    .unwrap()
-    .deploy(&signing_wallet, TxPolicies::default())
-    .await
     .unwrap();
+
+    let proxy_contract_id = proxy_contract.contract_id();
+    let proxy_contract_bytecode = hex::encode(proxy_contract.code());
+
     println!(
-        " - Proxy Contract Deployed with ContractId: {}",
-        ContractId::from(&proxy_contract_id)
+        " - Proxy Contract Predicted ContractId: {}",
+        &proxy_contract_id
     );
 
-    // Initialize proxy
-    println!(" - Initializing proxy contract...");
-    ProxyContract::new(proxy_contract_id, signing_wallet)
-        .methods()
-        .initialize_proxy()
-        .call()
-        .await
-        .unwrap();
-    println!(" - Proxy Contract initialized\n");
+    println!(
+        " - Proxy Contract Predicted Bytecode: {}",
+        &proxy_contract_bytecode
+    );
 }
