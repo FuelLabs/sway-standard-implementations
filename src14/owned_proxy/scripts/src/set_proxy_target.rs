@@ -1,5 +1,5 @@
 use clap::Parser;
-use fuels::types::ContractId;
+use fuels::{programs::calls::Execution, types::ContractId};
 use proxy_script_utils::{get_proxy_instance, setup_signing_wallet};
 use std::str::FromStr;
 
@@ -33,11 +33,11 @@ async fn main() {
     let current_target = proxy_contract
         .methods()
         .proxy_target()
-        .simulate()
+        .simulate(Execution::Realistic)
         .await
         .unwrap()
         .value;
-    println!("\n - The current target contract ID: {:?}", current_target);
+    println!("\n - The current target contract ID: {current_target:?}");
 
     let new_target =
         ContractId::from_str(&args.new_target_id).expect("New Target Id could not be parsed");
@@ -53,9 +53,9 @@ async fn main() {
     let new_target = proxy_contract
         .methods()
         .proxy_target()
-        .simulate()
+        .simulate(Execution::Realistic)
         .await
         .unwrap()
         .value;
-    println!(" - The new target contract ID: {:?}\n", new_target);
+    println!(" - The new target contract ID: {new_target:?}\n");
 }

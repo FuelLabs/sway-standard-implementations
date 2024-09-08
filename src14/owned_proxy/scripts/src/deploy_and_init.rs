@@ -15,7 +15,7 @@ struct Args {
     /// Signing key
     #[arg(short, long, required = true, env = "SIGNING_KEY")]
     signing_key: String,
-    /// Initial target ContractId
+    /// Initial target `ContractId`
     #[arg(long, required = true)]
     initial_target: String,
     /// Initial owner Id
