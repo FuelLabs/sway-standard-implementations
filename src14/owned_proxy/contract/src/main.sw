@@ -17,26 +17,27 @@ use standards::{src14::{SRC14, SRC14Extension}, src5::State};
 use std::execution::run_external;
 
 configurable {
-    /// The initial value of `storage.target`.
+    /// The initial value of `storage::SRC14.target`.
     INITIAL_TARGET: Option<ContractId> = None,
-    /// The initial value of `storage.proxy_owner`.
+    /// The initial value of `storage::SRC14.proxy_owner`.
     INITIAL_OWNER: State = State::Uninitialized,
 }
 
-#[namespace(SRC14)]
 storage {
-    /// The [ContractId] of the target contract.
-    ///
-    /// # Additional Information
-    ///
-    /// `target` is stored at sha256("storage_SRC14_0")
-    target: Option<ContractId> = None,
-    /// The [State] of the proxy owner.
-    ///
-    /// # Additional Information
-    ///
-    // `proxy_owner` is stored at sha256("storage_SRC14_1")
-    proxy_owner: State = State::Uninitialized,
+    SRC14 {
+        /// The [ContractId] of the target contract.
+        ///
+        /// # Additional Information
+        ///
+        /// `target` is stored at sha256("storage_SRC14_0")
+        target in 0x7bb458adc1d118713319a5baa00a2d049dd64d2916477d2688d76970c898cd55: Option<ContractId> = None,
+        /// The [State] of the proxy owner.
+        ///
+        /// # Additional Information
+        ///
+        /// `proxy_owner` is stored at sha256("storage_SRC14_1")
+        proxy_owner in 0xbb79927b15d9259ea316f2ecb2297d6cc8851888a98278c0a2e03e1a091ea754: State = State::Uninitialized,
+    },
 }
 
 impl SRC14 for Contract {
@@ -60,7 +61,7 @@ impl SRC14 for Contract {
     /// * Write: `1`
     #[storage(read, write)]
     fn set_proxy_target(new_target: ContractId) {
-        only_proxy_owner(storage.proxy_owner);
+        only_proxy_owner();
         _set_proxy_target(new_target);
     }
 
@@ -91,7 +92,7 @@ impl SRC14Extension for Contract {
     /// * Reads: `1`
     #[storage(read)]
     fn proxy_owner() -> State {
-        _proxy_owner(storage.proxy_owner)
+        _proxy_owner()
     }
 }
 
@@ -106,7 +107,7 @@ impl OwnedProxy for Contract {
     ///
     /// # Reverts
     ///
-    /// * When `storage.proxy_owner` is not [State::Uninitialized].
+    /// * When `storage::SRC14.proxy_owner` is not [State::Uninitialized].
     ///
     /// # Number of Storage Accesses
     ///
@@ -114,12 +115,12 @@ impl OwnedProxy for Contract {
     #[storage(write)]
     fn initialize_proxy() {
         require(
-            _proxy_owner(storage.proxy_owner) == State::Uninitialized,
+            _proxy_owner() == State::Uninitialized,
             InitializationError::CannotReinitialized,
         );
 
-        storage.target.write(INITIAL_TARGET);
-        storage.proxy_owner.write(INITIAL_OWNER);
+        storage::SRC14.target.write(INITIAL_TARGET);
+        storage::SRC14.proxy_owner.write(INITIAL_OWNER);
     }
 
     /// Changes proxy ownership to the passed State.
@@ -143,7 +144,7 @@ impl OwnedProxy for Contract {
     /// * Writes: `1`
     #[storage(write)]
     fn set_proxy_owner(new_proxy_owner: State) {
-        _set_proxy_owner(new_proxy_owner, storage.proxy_owner);
+        _set_proxy_owner(new_proxy_owner);
     }
 }
 

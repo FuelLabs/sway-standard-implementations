@@ -1,5 +1,5 @@
 use clap::Parser;
-use fuels::types::Address;
+use fuels::{programs::calls::Execution, types::Address};
 use proxy_script_utils::{get_proxy_instance, setup_signing_wallet, State};
 use std::str::FromStr;
 
@@ -33,11 +33,11 @@ async fn main() {
     let current_owner = proxy_contract
         .methods()
         .proxy_owner()
-        .simulate()
+        .simulate(Execution::Realistic)
         .await
         .unwrap()
         .value;
-    println!("\n - The current proxy owner: {:?}", current_owner);
+    println!("\n - The current proxy owner: {current_owner:?}");
 
     let new_owner = State::Initialized(
         Address::from_str(&args.new_owner)
@@ -56,9 +56,9 @@ async fn main() {
     let new_owner = proxy_contract
         .methods()
         .proxy_owner()
-        .simulate()
+        .simulate(Execution::Realistic)
         .await
         .unwrap()
         .value;
-    println!(" - The new proxy owner: {:?}\n", new_owner);
+    println!(" - The new proxy owner: {new_owner:?}\n");
 }
