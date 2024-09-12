@@ -14,4 +14,4 @@ The recommended way to utilize the [Owned Proxy Contract](./contract/src/main.sw
 
 ## Manual utility scripts
 
-This project does provide some [simple Rust scripts](./scripts/README.md) as examples for basic deployment and interaction functionality. However; this is NOT the recommended way of utilising the [Owned Proxy Contract](./contract/src/main.sw).
+This project does provide some [simple Rust scripts](./scripts/README.md) as examples for basic deployment and interaction functionality. However; this is NOT the recommended way of utilizing the [Owned Proxy Contract](./contract/src/main.sw).
