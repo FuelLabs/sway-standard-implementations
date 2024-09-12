@@ -17,6 +17,7 @@ cd src14/owned_proxy/scripts
 ```
 
 > **Note:** The optional flag `--provider-url <PROVIDER_URL>` sets the URL of the provider to be used in the script. If not manually set, it defaults to `127.0.0.1:4000` which is the default `fuel-core` URL.
+
 > **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
 
 #### Deploy and initialize
