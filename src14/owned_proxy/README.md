@@ -6,7 +6,7 @@
     </a>
 </p>
 
-- The [Owned Proxy Contract](./contract/src/main.sw) is an opinionated implementation of the [extended SRC-14 standard](https://docs.fuel.network/docs/sway-standards/src-14-simple-upgradeable-proxies/). It utilises the [Upgradability library from sway-libs](https://github.com/FuelLabs/sway-libs) and includes initialization functionality that allows for secure ownership upon deployment.
+- The [Owned Proxy Contract](./contract/src/main.sw) is an opinionated implementation of the [extended SRC-14 standard](https://docs.fuel.network/docs/sway-standards/src-14-simple-upgradeable-proxies/). It utilises the [Upgradability library from sway-libs](https://docs.fuel.network/docs/sway-libs/upgradability/) and includes initialization functionality that allows for secure ownership upon deployment.
 
 ## Recommended Usage
 
