@@ -16,6 +16,9 @@ Navigate to the [owned-proxy/scripts](./scripts/) directory. From `sway-standard
 cd src14/owned_proxy/scripts
 ```
 
+> **Note:** The optional flag `--provider-url <PROVIDER_URL>` sets the URL of the provider to be used in the script. If not manually set, it defaults to `127.0.0.1:4000` which is the default `fuel-core` URL.
+> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
+
 #### Deploy and initialize
 
 As described in the [SRC-14 standard](https://docs.fuel.network/docs/sway-standards/src-14-simple-upgradeable-proxies/); this proxy contract implementation works via The FuelVM's LDC instruction that is used by Sway's `std::execution::run_external` functionality to execute instructions from a target contract while retaining the proxy contract's storage context. As such a target contract must be deployed to be used alongside this proxy contract. There are two options to achieve this:
@@ -29,9 +32,6 @@ To deploy and initialize the proxy contract the `deploy_and_init` script is avai
 SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin deploy_and_init -- --initial-target <INITIAL_TARGET> --initial-owner <INITIAL_OWNER> --provider-url <PROVIDER_URL>
 ```
 
-> **Note:** The optional flag `--provider-url <PROVIDER_URL>` sets the URL of the provider to be used in the script. If not manually set, it defaults to `127.0.0.1:4000` which is the default `fuel-core` URL.
-> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
-
 #### Updating the proxy owner
 
 To update the proxy contract's owner the `set_proxy_owner` script is available. It will use the argument `--new-owner` as the new owner in the proxy contract. From `sway-standard-implementations/src14/owned_proxy/scripts/<you are here>`:
@@ -40,9 +40,6 @@ To update the proxy contract's owner the `set_proxy_owner` script is available. 
 SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin set_proxy_owner -- --proxy-contract-id <PROXY_CONTRACT_ID> --new-owner <NEW_OWNER> --provider-url <PROVIDER_URL>
 ```
 
-> **Note:** The optional flag `--provider-url <PROVIDER_URL>` sets the URL of the provider to be used in the script. If not manually set, it defaults to `127.0.0.1:4000` which is the default `fuel-core` URL.
-> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
-
 #### Updating the target contract
 
 To update the proxy contract's target the `set_proxy_target` script is available. It will use the argument `--new-target-id` as the new target contract in the proxy contract. From `sway-standard-implementations/src14/owned_proxy/scripts/<you are here>`:
@@ -50,6 +47,3 @@ To update the proxy contract's target the `set_proxy_target` script is available
 ```bash
 SIGNING_KEY=<SIGNING_KEY> cargo run -r --bin set_proxy_target -- --proxy-contract-id <PROXY_CONTRACT_ID> --new-target-id <NEW_TARGET_ID> --provider-url <PROVIDER_URL>
 ```
-
-> **Note:** The optional flag `--provider-url <PROVIDER_URL>` sets the URL of the provider to be used in the script. If not manually set, it defaults to `127.0.0.1:4000` which is the default `fuel-core` URL.
-> **Note:** There is also the optional flag `--signing-key <SIGNING_KEY>` which can be used instead of the environment variable `SIGNING_KEY`. However use of the environment variable `SIGNING_KEY` is preferred.
