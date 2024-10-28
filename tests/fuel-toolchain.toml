@@ -1,5 +1,5 @@
 [toolchain]
-channel = "testnet-2024-09-06"
+channel = "mainnet"
 
 [components]
 forc = "0.63.5"
