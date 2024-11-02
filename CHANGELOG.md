@@ -18,6 +18,7 @@ Description of the upcoming release here.
 - [#17](https://github.com/FuelLabs/sway-standard-implementations/pull/17) Update Owned Proxy to support `forc`'s deploy proxy feature.
 - [#19](https://github.com/FuelLabs/sway-standard-implementations/pull/19) Adds CI checks for `forc` compiler warnings.
 - [#20](https://github.com/FuelLabs/sway-standard-implementations/pull/20) Update Owned Proxy usage docs.
+- [#26](https://github.com/FuelLabs/sway-standard-implementations/pull/26) Adds Owned Proxy's audit report.
 
 ### Changed
 
